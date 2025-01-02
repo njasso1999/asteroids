@@ -5,17 +5,18 @@ from shot import *
 
 class Player(CircleShape):
     def __init__(self, x, y):
-        super().__init__(x, y, PLAYER_RADIUS)
+        super().__init__(x, y, int(PLAYER_RADIUS * 0.5))
         self.rotation = 0
         self.timer = 0
 
     # in the player class
     def triangle(self):
+        rad = self. radius * 2
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
-        right = pygame.Vector2(0, 1).rotate(self.rotation + 90) * self.radius / 1.5
-        a = self.position + forward * self.radius
-        b = self.position - forward * self.radius - right
-        c = self.position - forward * self.radius + right
+        right = pygame.Vector2(0, 1).rotate(self.rotation + 90) * rad / 1.5
+        a = self.position + forward * rad
+        b = self.position - forward * rad - right
+        c = self.position - forward * rad + right
         return [a, b, c]
     
     def draw(self, screen):
